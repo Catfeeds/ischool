@@ -1,0 +1,7 @@
+alter table wp_ischool_school add rmoney int(11);
+alter table wp_ischool_school add rmoney_note varchar(500);
+alter table wp_ischool_school add is_deleted tinyint(1) not null default 0;
+alter table wp_ischool_class add is_deleted tinyint(1) not null default 0;
+alter table wp_ischool_teacher add is_deleted tinyint(1) not null default 0;
+alter table wp_ischool_pastudent add is_deleted tinyint(1) not null default 0;
+alter table wp_ischool_student add is_deleted tinyint(1) not null default 0;

@@ -1,0 +1,231 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-5-11, 17:37:53
+    Author     : Bug
+*/
+blockquote,body,code,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,ul,li,ol,p,pre,td,textarea,th,ul{
+	margin:0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;
+	border-spacing:0;
+}
+body{
+    font-family: "微软雅黑";
+    color:#666; 
+    background-color: #eee;
+    font-size: 16px;
+}
+li{
+	list-style: none;
+}
+.clearfix{
+	clear: both;
+}
+.top{
+	width: 100%;
+	background-color: #38af03;
+	/*background-color: #6ec74f;*/
+	
+	color: white;
+	/*height: 3em;*/
+	text-align: center;
+}
+.top h1{
+	font-weight: 500;
+	font-size: 1.1em;
+	line-height: 2.4em;
+}
+/*.top h1{
+	font-size: .85rem;
+    font-weight: 500;
+    line-height: 2.2rem;
+}*/
+.left{
+	float: left;
+	margin-left: 1em;
+	margin-top: 0.8em;
+	background: url(/img/icon.png) no-repeat;
+	width: 1.0em;
+	height: 1.0em;
+	background-size: contain;
+	vertical-align: middle;
+}
+.left img{
+	width: 100%;
+	display: block;
+	vertical-align: middle;
+	
+}
+.yw{
+	background-color: white;
+	padding: 0.8em 2em;
+	line-height: 2em;
+	margin-top: 0.6em;
+}
+.yw_1{
+	color: red;
+}
+.xz{
+	background-color: white;
+	margin-top: 0.6em;
+	line-height: 1.5em;
+}
+.xz1{
+	padding: 0.6em 0;
+	padding-left: 2em;
+	border-bottom: 1px solid #ccc;
+}
+.xz1:last-child{
+	border: none;
+}
+.check{
+	/*float: left;*/
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	margin-right: 1em;
+}
+.xz2{
+	/*float: left;*/
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0.8em;
+	width: 83%;
+}
+.danj{
+	float: right;
+	color: orangered;
+	font-size: 1.3em;
+}
+.check_img{
+	background: url(/img/icon_02.png) no-repeat;
+	background-size: cover;
+	width: 1em;
+	height: 1em;
+}
+.check0{
+	position: absolute;
+	/*top: 0.6em;
+	left: 0.6em;*/
+	width: 25em;
+    opacity: 0;
+}
+input[type="checkbox"]:checked+div{
+	background: url(/img/icon_01.png) no-repeat;
+	background-size: cover;
+}
+.ts{
+	background-color: white;
+	line-height: 2em;
+	font-size: 1em;
+	color: black;
+	padding: 1em 0em 1em 1.8em;
+}
+.tsxj{
+	color: #999;
+}
+.price{
+	font-size: 1.2em;
+	margin-top: 0.6em;
+}
+#nowp{
+	color: orangered;
+	font-weight: bold;
+}
+.sj{
+	text-align: center;
+}
+.btn1{
+	box-sizing: border-box;
+	width: 22%;
+	line-height: 1.5em;
+	font-size: 1em;
+	color: black;
+	background-color: white;
+	border-radius: 0.3em;
+	border: 1px solid yellowgreen;
+	margin: 1em 2%;
+	position: relative;
+}
+input[type="radio"]{
+	width: 100%;
+	height: 1.5em;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+#zongjia{
+	text-decoration: none;
+	display: block;
+	background-color: #38af03;
+	width: 90%;
+	line-height: 2.5em;
+	text-align: center;
+	font-size: 1em;
+	color: white;
+	margin: 1em auto;
+	border-radius: 0.2em;
+}
+/*chongzhi start*/
+.student{
+	background-color: white;
+	width: 100%;
+	margin-top: 1em;
+	padding: 1em 0em;
+}
+.student p{
+	font-size: 1em;
+}
+.student select{
+	width: 100%;
+	height: 2em;
+	font-size: 1em;
+	background-color: #eee;
+	border: none;
+	border-radius: 0.2em;
+	margin-top: 0.5em;
+}
+.btn a{
+	text-decoration: none;
+	display: block;
+	background-color: #38af03;
+	width: 80%;
+	line-height: 2.5em;
+	text-align: center;
+	font-size: 1em;
+	color: white;
+	margin: 1.5em auto;
+	border-radius: 0.2em;
+}
+.btn a:last-child{
+	background-color: #FF6666;
+}
+.message{
+	background-color: white;
+	font-size: 0.6em;
+	color: black;
+	border-radius: 1em;
+	padding: 2em;
+}
+.bz{
+	display: inline-block;
+	background-color: #ccc;
+	border-radius: 0.6em;
+	padding: 0.2em;
+	margin-bottom: 1em;
+}
+.line{
+	width: 85%;
+	border-bottom: 1px solid #ccc;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+

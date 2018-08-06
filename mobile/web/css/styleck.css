@@ -1,0 +1,97 @@
+body {
+    background: #F6F6F6;
+}
+header {
+    height:50px;
+    width:100%;
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+    line-height:50px;
+    font-size: 18px;
+    background: #6FC84F;
+}
+.back-btn {
+    width: 50px;
+    height:50px;
+    position: absolute;
+    left:0;
+    right:0;
+    text-align: center;
+    color: #ffffff;
+    line-height:50px;
+    background: url("../img/back.png") center center no-repeat;
+    background-size: 50px;
+}
+
+.query-area {
+    width:80%;
+    margin:20px auto;
+}
+.input-item {
+    margin-top: 20px;
+    display: flex;
+}
+.input-item label {
+    font-size: 16px;
+    color: #686868;
+    line-height:32px;
+}
+.text-input {
+    flex: 1;
+    background: #ffffff;
+    border:1px solid #A4A4A4;
+    border-radius: 2px;
+    height:32px;
+}
+.query-btn {
+    background: #6FC84F;
+    width:100%;
+    margin-top: 20px;
+    text-align: center;
+    height:40px;
+    line-height:40px;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 3px;
+}
+.result-area {
+    margin-top: 20px;
+}
+.result-label {
+    display: flex;
+    height:50px;
+    border-top: 1px solid #e3d3d3;
+    border-bottom: 1px solid #e3d3d3;
+
+    background: #ededed;
+}
+.result-label span {
+    flex:2;
+    text-align: center;
+    font-size: 14px;
+    line-height:50px;
+    color: #919191;
+}
+
+.result-label span:first-child {
+    flex:3;
+}
+.result-item {
+    display: flex;
+    height:50px;
+    border-bottom: 1px solid #e3d3d3;
+}
+.result-item span {
+    flex:2;
+    text-align: center;
+    font-size: 12px;
+    line-height:50px;
+    color: #6B6B6B;
+    letter-spacing:2px;
+}
+.result-item span.result-time {
+    line-height:20px;
+    flex:3;
+    padding-top:5px;
+}

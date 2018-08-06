@@ -1,0 +1,103 @@
+@charset "utf-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+		    	font-family: "微软雅黑";
+}
+html{
+	font-size: 100%;
+}
+body{
+	background-color: #f0f0f0;
+}
+#header{
+	width: 100%;
+	background-color: #38af03;
+	color: white;
+	text-align: right;
+	line-height: 3rem;
+	height: 3rem;
+	position: relative;
+}
+#header a{
+	padding-right: 1rem;
+	color: white;
+	text-decoration: none;
+}
+#back{
+	float: left;
+	margin-left: 1rem;
+}
+#back img{
+	width: 0.8rem;
+	vertical-align: middle;
+	
+}
+#back span{
+	padding-left: 0.2rem;
+	font-size: 1rem;
+}
+#text{
+	background-color: #f6f6f6;
+	line-height: 4rem;
+	height: 4rem;
+	color: #999;
+	padding-left: 1rem;
+}
+#text1{
+	line-height: 4rem;
+	height: 4rem;
+	color: #999;
+	padding-left: 1rem;
+}
+table{
+	width: 100%;
+	font-size: 0.9rem;
+	line-height: 3rem;
+	text-align: center;
+	background-color: white;
+}
+table td{
+	border-bottom: 1px solid #dcdcdc;
+}
+tr td:first-child{
+	color: #666;
+}
+tr td:first-child+td{
+	color: #ff6666;
+}
+.feiyong{
+	background-color: #f6f6f6;
+	line-height: 4rem;
+	height: 4rem;
+	color: #666;
+}
+.jine{
+	background-color: white;
+	padding-left: 1rem;
+	color: #666;
+}
+.jine input{
+	border: none;
+	line-height: 3rem;
+	padding-left: 1rem;
+}
+#jfbtn{
+	width: 80%;
+	color: white;
+	margin-top: 2rem;
+	background-color: #38af03;
+}
+.jlp{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 1rem;
+}
+.jls{
+	padding-top: 0.6rem;
+	color: #FF6666;
+}
+.sj{
+	color: #999;
+}

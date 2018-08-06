@@ -1,0 +1,584 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2017-03-17
+ * Time: 8:46
+ */
+namespace app\controllers;
+use Yii;
+use Yii\db\Expression;
+use app\models\gonggao;
+use app\models\News;
+use app\models\WpIschoolInbox;
+use app\models\WpIschoolOutbox;
+use app\models\WpIschoolSafecard;
+use app\models\WpIschoolTeaclass;
+use backend\models\WpIschoolStudent;
+use frontend\models\WpIschoolMsgcount;
+use frontend\models\WpIschoolPicschool;
+use yii\web\Controller;
+use app\models\BaseModel;
+use yii\web\ForbiddenHttpException;
+use app\models\Pastudent;
+use app\models\paUser;
+use yii\data\Pagination;
+use yii\helpers\ArrayHelper;
+
+class BaseController extends Controller
+{
+    public $basemodel;
+    public $layout;
+    public $lastcid;
+    public $lastsid;
+    public $last_sid;    
+    public $user;
+    public function init()
+    {
+        parent::init();
+//        \Yii::$app->session['isLogin'] = 1;
+        $session = \Yii::$app->session;
+        $tel = $session->get('tel');
+        $lifetime = $session->get('lifetime');
+        $openid = $session->get('openid');
+        $role = $session->get('role');
+//var_dump($tel);exit();
+        if(isset($tel) && !empty($tel) && $lifetime>time() && !empty($openid))
+        {
+            $this->enableCsrfValidation = false;
+            //\yii::$app->view->params['schoolid'] = \yii::$app->user->getIdentity()['school_id'];
+            $this->basemodel = new BaseModel();
+            $user  = new paUser();
+            $info['user'] = $user->getParinfo($tel,$role);
+            $this->lastsid = !empty($info['user'][0]['last_sid'])?$info['user'][0]['last_sid']:"1";
+            $this->user = $info['user'];
+            \yii::$app->view->params['user'] = $info['user'];
+            $info['path'] = Yii::$app->request->hostInfo;
+            \yii::$app->view->params['path'] = $info['path'];
+            $connection  = \Yii::$app->db;
+            $command = $connection->createCommand('select distinct pro from wp_ischool_school ORDER BY convert(pro USING gbk)');
+            $info['pro'] = $command->queryAll();
+            if($info['user'][0]['shenfen'] == "jiazhang"){
+                $this->layout ="main.php";
+                $model = new Pastudent();
+                $info['pastudent'] = !empty($info['user'][0]['openid'])?$model->getPastudent($info['user'][0]['openid']):"";
+                $info['countChild'] =  !empty($info['pastudent'])?count($info['pastudent']):0;
+                \yii::$app->view->params['key'] = $info['pastudent'];
+            }
+            if($info['user'][0]['shenfen'] == "tea"){
+                $this->layout ="maintc.php";
+                $models = new WpIschoolTeaclass();
+//                $info['teachers'] = $models->getTeachers($info['user'][0]['tel']);
+                $info['teachers'] = !empty($info['user'][0]['openid'])?$models->getTeachers($info['user'][0]['openid']):"";
+                if(!empty($info['teachers'])){
+                    \yii::$app->view->params['teachers'] = $info['teachers'];
+                }else{
+                    \yii::$app->view->params['teachers'] = "";
+                }
+                $info['teacheres'] = !empty($info['user'][0]['openid'])?$models->getTeacheres($info['user'][0]['openid']):"";
+                $this->lastcid = $info['user'][0]['last_cid'];
+            }
+            if($info['user'][0]['shenfen'] == "guanli"){
+                $this->layout ="maingl.php";
+                $sid = !empty($info['user'][0]['last_sid'])?$info['user'][0]['last_sid']:"0";
+            $sql_school = "select * from wp_ischool_school WHERE id=:id ";    //获取当前学校的详细信息
+            $info['sname'] = $connection->createCommand($sql_school,[":id"=>$sid])->queryAll();
+                $openid = !empty($info['user'][0]['openid'])?$info['user'][0]['openid']:"";
+                if(!empty($openid)){
+                    $info['school'] = $this->getAllschool($openid);
+                    $info['schools'] = $this->getAllschools($openid);
+                }else{
+                    $info['school'] ="";
+                }
+                \yii::$app->view->params['schools'] = !empty($info['school'])?$info['school']:"";
+//            if(!empty($info['sname'])){
+//                \yii::$app->view->params['sname'] = $info['sname'];
+//            }else{
+//                \yii::$app->view->params['sname'] = "";
+//            }
+                // $this->lastsid = $sid;
+                $this->last_sid = !empty($info['school'][0]['sid'])?$info['school'][0]['sid']:"1";
+            }
+            $info['subject'] = $this->Getsubject();//教师角色列表
+            return $info;
+        }else{
+            echo '<html>';
+            echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
+            echo "<script>alert('您还没有登录，请先登录！');window.location='/site/denglu';</script>";
+            echo '</html>';
+            exit();
+        }
+
+    }
+
+    //根据用户openid获取用户绑定并且审核过的学校列表
+    public function getAllschool($openid)
+    {
+        $sql = "select * from wp_ischool_user_role where openid= :openid AND shenfen='school' AND ispass='y'";
+        $res = \Yii::$app->db->createCommand($sql,['openid'=>$openid])->queryAll();
+        return $res;
+    }
+    //根据用户openid获取用户绑定的学校列表包含未审核的
+    public function getAllschools($openid)
+    {
+        $sql = "select * from wp_ischool_user_role where openid= :openid AND shenfen='school'";
+        $res = \Yii::$app->db->createCommand($sql,['openid'=>$openid])->queryAll();
+        return $res;
+    }
+
+    /**根据学生ID获取学生表对应的信息*/
+    public function stuinfo($id){
+        $connection  = \Yii::$app->db;
+        $command = $connection->createCommand("select * from wp_ischool_student where id='".$id."'");
+        $res =  $command->queryAll();
+        return $res;
+    }
+    //根据班级ID获取改班级学生表对应的姓名
+    public function getStuname($cid){
+        if(empty($cid)){
+            $cid =  $this->lastcid;
+        }
+        $model = WpIschoolStudent::find()->where(['cid'=>$cid])->orderBy('name asc')->asArray()->all();
+        return ArrayHelper::map($model, 'id', 'name');
+    }
+
+    //根据学校ID获取改学校学生表对应的姓名
+    public function getStunamebysid($sid){
+        if(empty($sid)){
+            $cid =  $this->lastsid;
+        }
+        $model = WpIschoolStudent::find()->where(['sid'=>$sid])->orderBy('name asc')->asArray()->all();
+        return ArrayHelper::map($model, 'id', 'name');
+    }
+
+    /**根据班级ID获取老师信息*/
+    public  function  Allteacher($id){
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select * from wp_ischool_teaclass where cid='".$id."' and ispass='y' group by openid");
+        $res =  $command->queryAll();
+        return $res;
+    }
+
+    /**根据班级ID获取班主任信息*/
+    public  function  Headmaster($id){
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select * from wp_ischool_teaclass where cid='".$id."' and role ='班主任'");
+        $res =  $command->queryAll();
+        return $res;
+    }
+    /**根据学校ID获取该学校所有已审核老师信息此段暂时不用 用下面的*/
+    public  function  getAlltea($sid,$name){
+            $sql = "select * from wp_ischool_teaclass where sid=".$sid." and ispass='y' and tel !='' GROUP BY tel order by convert(tname using gbk) asc";
+        if(!empty($name)){
+            $sql = "select * from wp_ischool_teaclass where sid=".$sid." and ispass='y' and tel !=''and tname like '%$name%' GROUP BY tel order by convert(tname using gbk) asc";
+        }
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand($sql);
+        $res =  $command->queryAll();
+        return $res;
+    }
+    /**根据学校ID获取该学校所有已审核老师信息*/
+    public  function  getAllteat($sid,$name){
+        $sql = "select * from wp_ischool_teaclass where sid=".$sid." and ispass='y' GROUP BY openid order by convert(tname using gbk) asc";
+        if(!empty($name)){
+            $sql = "select * from wp_ischool_teaclass where sid=".$sid." and ispass='y' and tname like '%$name%' GROUP BY openid order by convert(tname using gbk) asc";
+        }
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand($sql);
+        $res =  $command->queryAll();
+        return $res;
+    }
+
+
+    /**根据sid，openid获取对应老师详细信息*/
+//    public function teainfo($sid,$openid){
+//        $connection  = Yii::$app->db;
+//        $command = $connection->createCommand("select * from wp_ischool_teacher where sid='".$sid."' and openid ='".$openid."'");
+//        $res =  $command->queryAll();
+//        return $res;
+//    }
+
+    public function opSucceed($url)
+    {
+        return $this->render("/pastudent/alert",[
+            "info"=>"操作成功",
+            "location_url"=>$url
+        ]);
+    }
+    public function opFailed($url)
+    {
+        return $this->render("/pastudent/alert",[
+            "info"=>"操作失败",
+            "location_url"=>$url
+        ]);
+    }
+    /*  计算时间戳，本月头month，本周头week，本日头today时间戳作为查询起点 */
+   public function getBeginTimestamp($type){
+        $beginTs="";
+        if($type=='today') {
+            $beginTs=strtotime(date('Y-m-d'));
+        }else if($type=='week'){
+            $date = date("Y-m-d");
+            $first=1;                                // 1 表示每周星期一为开始时间，0表示每周日为开始时间
+            $w = date("w", strtotime($date));       //获取当前是本周的第几天，周日是 0，周一 到周六是 1 -6
+            $d = $w ? $w - $first : 6;              //如果是周日 -6天
+            $now_start = date("Y-m-d", strtotime("$date -".$d." days")); //本周开始时间：
+            $beginTs =  strtotime($now_start);     //本周起始时间戳
+        }else if($type=='month'){
+            $beginTs=strtotime(date('Y-m'));
+        }
+
+        return $beginTs;
+    }
+    /***    修改用户名     */
+    public function Upname($name,$id)
+    {
+        $session = \Yii::$app->session;
+        $upuser = paUser::findOne($id);
+        $upuser->name = $name;
+        $upname = $upuser->save(false);
+        if($upname){
+            unset($session['name']);
+            $session['name'] = $name;
+            return 0;
+        }else{
+            return 1;
+        }
+    }
+    /***    修改用户电话号码     */
+    public function Uptel($tel,$id)
+    {
+        $session = \Yii::$app->session;
+        $upuser = paUser::findOne($id);
+        $upuser->tel = $tel;
+        $istel = paUser::findOne(['tel'=>$tel]);    //查询手机号是否存在
+        if($istel){
+            return 2;
+        }
+        $uptel = $upuser->save(false);
+        if($uptel){
+            unset($session['tel']);
+            $session['tel'] = $tel;
+            return 0;
+        }else{
+            return 1;
+        }
+    }
+    /**从数据库获取城市信息*/
+    public function actionGetcity(){
+        $pname = \yii::$app->request->post('pro');
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select distinct city from wp_ischool_school where pro='".$pname."' ORDER BY convert(city USING gbk)");
+        $post =  json_encode($command->queryAll());
+        return $post;
+    }
+    /**从数据库获取乡镇信息*/
+    public function actionGetcounty(){
+        $pname = \yii::$app->request->post('city');
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select distinct county from wp_ischool_school where city='".$pname."' ORDER BY convert(county USING gbk)");
+        $post =  json_encode($command->queryAll());
+        return $post;
+    }
+//学校类型 高中初中小学
+    public function actionGettype(){
+        $pname = \yii::$app->request->post('county');
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select distinct schtype from wp_ischool_school where county='".$pname."' ORDER BY convert(schtype USING gbk)");
+        $post =  json_encode($command->queryAll());
+        return $post;
+    }
+
+    //学校名字
+    public function actionGetschool(){
+        $area = \yii::$app->request->post('county');
+        $cname = \yii::$app->request->post('schtype');
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select id,name from wp_ischool_school where schtype='".$cname."' and county='".$area."' ORDER BY convert(name USING gbk)");
+        $post =  json_encode($command->queryAll());
+        return $post;
+    }
+    public function actionGetclass(){
+        $sid = \yii::$app->request->post('sid');
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select id,name from wp_ischool_class where sid='".$sid."' ORDER BY convert(name USING gbk)");
+        $post =  json_encode($command->queryAll());
+        return $post;
+    }
+    /**从数据库获取教师角色信息*/
+    public function Getsubject(){
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select distinct name,id from wp_ischool_subject ORDER BY id asc ");
+        $post =  $command->queryAll();
+        return $post;
+    }
+    //获取收件箱内容列表
+    public function getinboxlist($inopenid,$type){
+        $model = WpIschoolInbox::find()->where(['inopenid'=>$inopenid,'type'=>$type]);
+        $pagination = new Pagination([
+            'defaultPageSize' => 8,
+            'totalCount' =>$model->count(),
+        ]);
+        $model = $model->orderBy('id DESC')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        $res['pages'] = $pagination;
+        $res['dataprovider']=$model;
+        return $res;
+    }
+    //获取发件箱内容列表
+    public function getoutboxlist($outopenid,$type){
+        $model = WpIschoolOutbox::find()->where(['outopenid'=>$outopenid,'type'=>$type]);
+        $pagination = new Pagination([
+            'defaultPageSize' => 8,
+            'totalCount' =>$model->count(),
+        ]);
+        $model = $model->orderBy('id DESC')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        $res['pages'] = $pagination;
+        $res['dataprovider']=$model;
+        return $res;
+    }
+    //根据班级ID获取改班级所有的学生信息
+    public function getAllstubycid($cid){
+        $model = WpIschoolStudent::find()->where(['cid'=>$cid])->orderBy('name asc')->asArray()->all();
+        return $model;
+    }
+    //根据学生ID获取对应的所有家长的openid
+    public function getAllopenidbystuid($stuid){
+        $res = Pastudent::find()->where(['and',['in', 'stu_id', $stuid],['ispass'=>'y'],"`openid` != ''"])->asArray()->all();
+        $pOpenids = array();
+        $this->insertArrToOther($res,$pOpenids);
+        return $pOpenids;
+    }
+    //根据班级ID获取改班级所有学生的家长openid
+    public  function getAllopenidbycid($cid){
+        $res = Pastudent::find()->where(['and',['cid' => $cid],['ispass'=>'y'],"`openid` != ''"])->asArray()->all();
+        $pOpenids = array();
+        $this->insertArrToOther($res,$pOpenids);
+        return $pOpenids;
+    }
+    /*  将结果openid数组分别追加到另一个数组，最后返回新数组 */
+    function insertArrToOther($oldArr,&$newArr){
+        $len1 = count($oldArr);
+        for($i = 0; $i < $len1; $i++){
+            $newArr[] = $oldArr[$i]['openid'];
+        }
+    }
+//删除收件箱的信息
+    public function delInbox($id){
+        $delinbox = WpIschoolInbox::findOne($id)->delete();
+        return $delinbox;
+    }
+    //删除发件箱的信息
+    public function delOutbox($id){
+        $delinbox = WpIschoolOutbox::findOne($id)->delete();
+        return $delinbox;
+    }
+    //删除公告的信息
+    public function delGonggao($id){
+        $delinbox = gonggao::findOne($id)->delete();
+        return $delinbox;
+    }
+    //删除动态的信息
+    public function delDongtai($id){
+        $delinbox = News::findOne($id)->delete();
+        return $delinbox;
+    }
+    //获取打卡列表信息
+    public function getdklist($stuid,$begintm){
+        $models = WpIschoolSafecard::find()->where(['and',['in', 'stuid', $stuid],['>','ctime',$begintm],['<>','info','未到']]);
+        $pagination = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' =>$models->count(),
+        ]);
+        $model = $models->orderBy('ctime DESC')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        $info['pages']=$pagination;
+        $info['model'] =$model;
+        return $info;
+    }
+    //获取某一天打卡列表信息
+    public function getDaylist($stuid,$begintm,$endtime){
+        $models = WpIschoolSafecard::find()->where(['and',['in', 'stuid', $stuid],['between','ctime',$begintm,$endtime],['<>','info','未到']]);
+        $pagination = new Pagination([
+            'defaultPageSize' =>20,
+            'totalCount' =>$models->count(),
+        ]);
+        $model = $models->orderBy('ctime DESC')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        $info['pages']=$pagination;
+        $info['model'] =$model;
+        return $info;
+    }
+
+    //根据学校ID获取学校名称
+    public  function getschoolnamebysid($sid)
+    {
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select id,name from wp_ischool_school where id='".$sid."' ORDER BY convert(name USING gbk)")->queryAll();
+        return $command;
+    }
+    //根据学生ID获取学校ID
+    public function getSchoolidbystuid($stuid)
+    {
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select sid,school,cid from wp_ischool_student where id='".$stuid."' ORDER BY convert(name USING gbk)")->queryAll();
+        return $command;
+    }
+
+    //根据班级id获取学校id
+    public function getSchoolidbycid($cid){
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select sid,school from wp_ischool_class where id='".$cid."' ORDER BY convert(name USING gbk)")->queryAll();
+        return $command;
+    }
+    //根据sid获取轮播图片的URL地址
+    public function getLunbopicurl($sid)
+    {
+        $connection  = Yii::$app->db;
+        $command = $connection->createCommand("select sid,picurl from wp_ischool_hpage_lunbo where sid='".$sid."' ORDER BY id desc")->queryAll();
+        return $command;
+    }
+
+    //生成指定长度的字符串
+        function create_random_string($random_length) {
+            $chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+            $random_string = '';
+            for ($i = 0; $i < $random_length; $i++) {
+            $random_string .= $chars [mt_rand(0, strlen($chars) - 1)];
+            }
+            return $random_string;
+        }
+
+    //修改密码
+    public function actionUpdatepwd(){
+        $user = $this->user;
+        $post =\yii::$app->request->post();
+        $oldpasswd = $post['pwd'];  //老密码
+        $newpasswd = $post['newPwd'];    //新密码
+        if(md5($oldpasswd) == $user[0]['pwd']){
+            $model = paUser::findOne($user[0]['id']);
+            $model->pwd = md5($newpasswd);
+            $res = $model->save(false);
+            if($res>0 || $res === 0){
+                echo "<script>alert('修改成功！');history.go(-1);</script>";
+            }else{
+                echo "<script>alert('修改失败！');history.go(-1);</script>";
+            }
+        }else{
+            echo "<script>alert('密码不正确，请填写正确的密码！');history.go(-1);</script>";
+        }
+    }
+
+    //获取学校图片信息
+    public function getSchoolPic($sid){
+        $toppic =WpIschoolPicschool::find()->select('toppic')->where(['schoolid'=> $sid])->asArray()->all();
+        if($toppic){
+            return $toppic[0]['toppic'];
+        }else{
+            return URL_PATH."/upload/syspic/msg.jpg";
+        }
+    }
+
+    /**
+     * 信息发送频率统计
+     */
+    public function setMsgNum($msgType,$to){
+        $ym     = date("Ym");
+        $cidArr = explode(',',$to);
+        if($msgType == 'gg'){
+            $type = 0;
+        }else{
+            $type = 1;
+            $cids = WpIschoolStudent::find()->select('cid')->distinct(true)->where(new \yii\db\Expression('FIND_IN_SET("'.$cidArr.'",id)'))->asArray()->all();
+            foreach($cids as $cid){
+                $cidArr[] = $cid['cid'];
+            }
+        }
+
+        foreach($cidArr as $cid){
+            $data['cid'] = $cid;
+            $data['ym'] = $ym;
+            $data['type'] = $type;
+            $res =WpIschoolMsgcount::find()->where($data)->asArray()->all();
+            if(empty($res)){
+                $m=new WpIschoolMsgcount;
+                $m->num = 1;
+                $m->save(false);
+            }else{
+                WpIschoolMsgcount::updateAllCounters($data,['num'=>1]);
+            }
+        }
+    }
+
+    public function getOneTeaOfClass($cid,$openid){
+        $con['cid'] = $cid;
+        $con['openid'] = $openid;
+        $m= WpIschoolTeaclass::find()->select('tname')->where($con)->asArray()->all();
+        return $m;
+    }
+
+    function getAllUser($sid){
+        $allUserArr=array();
+        $this->getAllTeacher($sid,$allUserArr);
+        $this->getAllParents($sid,$allUserArr);
+        return $allUserArr;
+    }
+
+    /**
+     * @param $sid
+     * return 所有老师
+     */
+    function getAllTeacher($sid,&$teaArr){
+
+        $sql="select distinct openid from wp_ischool_teaclass where sid=".$sid;
+        $teachers =  WpIschoolTeaclass::findBySql($sql)->asArray()->all();
+        foreach($teachers as $v){
+            $teaArr[] = $v['openid'];
+        }
+        return 0;
+    }
+
+    /**
+     * @param $sid
+     * return 所有家长
+     */
+    function getAllParents($sid,&$parArr){
+        $sql="select distinct openid from wp_ischool_pastudent where sid=".$sid;
+        $parents = Pastudent::findBySql($sql)->asArray()->all();
+        foreach($parents as $v){
+            $parArr[] = $v['openid'];
+        }
+        return 0;
+    }
+
+    //切换当前身份信息
+    public function actionChangeshenfen()
+    {
+        $user = $this->user;
+//        var_dump($user);exit();
+        $post = \yii::$app->request->post();
+        $shenfen = $post['shenfen'];
+        if(!empty($shenfen)){
+            $model = paUser::findOne($user[0]['id']);
+            $model->shenfen = $shenfen;
+            $res = $model->save(false);
+            if($res){
+                return 0;
+            }else{
+                return 1;
+            }
+        }else{
+            return 1;
+        }
+    }
+
+}

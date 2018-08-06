@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+/*元素默认间距清零*/
+.clear:after{
+    content: '';
+    height:0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+.clear{
+    *zoom:1;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+html{
+    font-size: 10px;
+}
+body{
+    font-family: "Microsoft Yahei", "simsun", Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    background:#f0f0f0 ;
+    color: #050606;
+    letter-spacing: 4px;
+}
+/*公共声明*/
+.title{
+    background: #6ec74f;
+    color: white;
+    font-size:3rem;
+    display: flex;
+    padding: 0 3rem;
+    justify-content: center;
+}
+.title a{
+    color: white;
+    font-size: 4.8rem;
+    line-height: 4.8rem;
+}
+.title a:hover{
+    color: white;
+    text-decoration: none;
+}
+.title span{
+    display: inline-block;
+    line-height: 4.8rem;
+    margin: 0 auto;
+}
+/*以上是头部修饰*/
+.car{
+    background: white;
+    margin-top: 3rem;
+    line-height: 3rem;
+    padding: 1rem 3rem;
+}
+.tishi{
+    background: white;
+    margin-top: 3rem;
+    padding: 1rem 3rem;
+    border-radius: 20px;
+    position: relative;
+}
+.tishi span{
+    background:#f0f0f0 ;
+    width: 3rem;
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    position: relative;
+    top:1rem
+}
+
+.tishi p{
+    line-height: 5rem;
+}

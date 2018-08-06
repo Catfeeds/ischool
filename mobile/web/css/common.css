@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+blockquote,body,code,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+li{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+q:after,q:before{content:''}
+abbr,acronym{border:0;font-variant:normal}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+legend{color:#333}
+html{}
+body{  font-family: "微软雅黑";color:#666; font-size: 14px; }
+a{color:#333;text-decoration:none;  font-family: "微软雅黑";}
+a:hover{text-decoration:none}
+h1,h2,h3,h4,h5,h6{font-family: "微软雅黑";color:#333;-webkit-font-smoothing:antialiased}
+input[type=password]{font-family: "微软雅黑";}
+.fl{ float: left;}
+.fr{ float: right;}
+.clear{clear: both;}
+
+::-webkit-input-placeholder { 
+    color:    #f1f1f1;
+}
+:-moz-placeholder {
+    color:    #f1f1f1;	
+}
+::-moz-placeholder {
+    color:    #f1f1f1;
+}
+:-ms-input-placeholder {
+    color:    #f1f1f1;
+}
+.zong{background:#f4f4f4;}
+/*头部*/
+.gzh_head{ height:50px; width:100%; background-color:#38af03}
+.gzh_head p{ float:left; font-size:22px; color:#ffffff; font-weight:500; line-height:50px; padding-left:20px;}
+.gzh_head img{ float:right; padding-top:10px; padding-right:1em; display:block;}
+.gzh_head img.gzh_head_m1{ float:right; padding-top:2px; padding-right:1em; display:block;}

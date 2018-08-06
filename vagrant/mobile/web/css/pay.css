@@ -1,0 +1,117 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-5-11, 16:43:33
+    Author     : Bug
+*/
+*{
+    margin: 0 auto;
+    padding: 0 auto;
+    vertical-align: top;
+    outline: none;
+    box-sizing: border-box;
+    outline: none;
+    background: none;
+
+}
+/*以上是对元素默认间距清零*/
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+.clear:after{
+    content: '';
+    height:0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+.clear{
+    *zoom:1;
+}
+html{
+    font-size: 20px;
+}
+body{
+    font-family: "Microsoft Yahei", "simsun", Arial, Helvetica, sans-serif;
+    font-size: .7rem;
+}
+.maxwrap{
+    width: 80%;
+    margin: 0 auto;
+}
+/*以上是公共声明*/
+.returnb span{
+    color: white;
+}
+.title{
+    background: #6ec74f;
+    color: white;
+}
+/*以上是tou头部*/
+.studentname{
+    width: 100%;
+    padding: .5rem 1rem;
+    background: white;
+    margin-top: 1rem;
+}
+.studentname h4{
+    width: 90%;
+    line-height: 1.8rem;
+}
+.studentname .downmenu{
+    width: 100%;
+    font-size:.6rem;
+    color: grey;
+    padding: .3rem 0rem;
+    background: #f1f1f1;
+    margin-top:.4rem;
+    -webkit-border-radius:.2rem;
+    -moz-border-radius:.2rem;
+    border-radius:.2rem;
+    position: relative;
+}
+.downmenu option{
+    position: absolute;
+}
+/*以上是学生姓名部分*/
+/*#btn,#btn1{
+    width:70%;
+    padding: .3rem 0;
+    color: white;
+    text-align:center;
+    -webkit-border-radius:.2rem;
+    -moz-border-radius:.2rem;
+    border-radius:.2rem;
+    margin-left:15%;
+    margin-top:1.5rem;
+}*/
+/*以上是支付按钮修饰*/
+.help{
+    width: 100%;
+    background: white;
+    padding: .5rem 1rem;
+    margin:1.5rem 0 2rem 0;
+    border-radius: .4rem;
+    position: relative;
+}
+.help p:first-child{
+    width: 3rem;
+    text-align: center;
+    padding: .1rem .5rem;
+    border-radius:.5rem ;
+    background: #e8e8e8;
+    position: absolute;
+    top:0rem;
+}
+.help p:last-child{
+    border-top: .005rem solid #e8e8e8;
+    padding-top:1rem;
+}
+/*以上是帮助结构修饰*/
+

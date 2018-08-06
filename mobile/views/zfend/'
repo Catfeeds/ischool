@@ -1,0 +1,165 @@
+<?php
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use mobile\assets\AppAsset;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\helpers\Url;
+//var_dump($sid=\yii::$app->view->params['openid']);die;
+AppAsset::register($this);
+?>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>消费记录</title>
+    <link rel="stylesheet" href="/css/basic.css">
+    <link rel="stylesheet" href="/css/styleck.css">
+    <script type="text/javascript" src="/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/js/css3-mediaqueries.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-confirmation.js"></script>
+    <script type="text/javascript" src="/js/dialog-min.js"></script>
+    <script type="text/javascript" src="/js/ajaxload.js"></script>
+    <script type="text/javascript" src="/js/Headroom.js"></script>
+    <script type="text/javascript" src="/js/jQuery.headroom.min.js"></script>
+    <script type="text/javascript" src="/js/LocalResizeIMG.js"></script>
+    <script type="text/javascript" src="/js/patch/mobileBUGFix.mini.js"></script>
+
+    <script type="text/javascript" src="/js/dimmer.min.js"></script>
+    <script type="text/javascript" src="/js/manage.js"></script>
+    <script src="/js/DateTimePicker.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+<header>
+    <a href="#" class="back-btn"></a>
+    消费记录
+</header>
+<div class="query-area">
+    <div class="input-item">
+        <label for="starttime">开始时间：</label>
+        <input type="date" id="starttime" class="text-input">
+    </div>
+    <div class="input-item">
+        <label for="endtime">结束时间：</label>
+        <input type="date" id="endttime" class="text-input">
+    </div>
+    <button class="query-btn"  onclick="doDownCK()">查询</button>
+</div>
+<div class="result-area">
+    <div class="result-label" id="ckshuju">
+        <span>消费时间</span>
+        <span>消费地点</span>
+        <span>消费金额</span>
+        <span>消费余额</span>
+    </div>
+    <ul class="result-list" id="ul">
+        <li class="result-item">
+            <span class="result-time">
+                2017-01-06 <br> 12:06:15
+            </span>
+            <span>
+                1号消费机
+            </span>
+            <span>
+                10.50
+            </span>
+            <span>
+                198.50
+            </span>
+        </li>
+      
+    </ul>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+//  $(function () {
+//
+//	$("#new-class-room").hide();
+//	$("#dtBox").css({'z-index':'9999'})
+//	$("#dtBox").DateTimePicker(
+//	{
+//		dateFormat: "yyyy-MM-dd",
+//		dateTimeFormat: "yyyy-MM-dd HH:mm:ss",
+//		timeFormat: "HH:mm",
+//		shortDayNames: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+//		fullDayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+//		shortMonthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+//		fullMonthNames:  ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+//		titleContentDate: "您要导出哪一天的考勤？",
+//		titleContentTime: "您要导出哪一天的考勤？",
+//		titleContentDateTime: "您要导出哪一天的考勤？",
+//		buttonsToDisplay: ["HeaderCloseButton", "SetButton", "ClearButton"],
+//		setButtonContent: "确定",
+//		clearButtonContent: "取消"
+//	});
+//});
+
+	function doDownCK(){             
+		var downtime = $("#starttime").val();
+		var endttime = $("#endttime").val();             
+		if(downtime==""){
+			alert("请选择开始日期");
+			return 0;
+		}
+		if(endttime==""){
+			alert("请选择结束日期");
+			return 0;
+		}
+                
+		var path = $("#path").val();
+//		var sid = $("#sid").val();
+//		var openid = $("#openid").val();
+		var url = "/zfend/ckcx";
+		var para = {"downtime":downtime,"endttime":endttime};
+		$.getJSON(url,para,function(data){
+			if(data.flag==0){
+			    $("#ul").empty();
+			    $.each(data.ckshuju,function(info){
+				console.log(info)
+				var span = "<li class='result-item'> <span class='result-time'>"+info.created+"</span> <span> 1号消费机 </span><span>"+info.amount+"</span><span>"+info.balance+"</span></li>";	
+				console.log(span);
+				$("#ul").append(span);
+			    })
+                           //for(var i=0;i<data.ckshuju.length;i++){
+                           //   $("#ul").append("<li class='result-item'> <span class='result-time'>2017-01-06 <br> date('Y-i-m h:i:d',data.ckshuju.created) </span> <span> 1号消费机 </span><span>data.ckshuju.amount</span><span>data.ckshuju.balance</span></li>");
+                           // }			
+			}else{
+				alertDialog("导出失败请重试");
+			}
+		});
+	}
+
+	
+ // 底部菜单导航 遮盖  掌上物业
+  $(".footer-menu").click(function(){ 
+     var thisid = $(this).attr("id");
+   $(".mynav").each(function() {
+     if($(this).hasClass(thisid)){
+       if($(this).hasClass("on")){
+            $(this).slideUp(300);
+         $(this).removeClass("on").addClass("off");
+         }else{
+         $("."+thisid).slideDown(300);
+         $(this).removeClass("off").addClass("on");
+           
+      }
+       
+     }else{
+            $(this).slideUp(300);
+      $(this).removeClass("on").addClass("off");
+     }
+     });
+   
+  });
+
+</script>
+
+<?php $this->endPage() ?>

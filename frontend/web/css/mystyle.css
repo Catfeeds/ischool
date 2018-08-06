@@ -1,0 +1,427 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    vertical-align: top;
+}
+/*默认元素清零*/
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: #050606;
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+html{
+    font-size: 20px;
+}
+body{
+    font-size:12px;
+    font-family: "Microsoft Yahei", "simsun", Arial, Helvetica, sans-serif;
+    /*height: 1200px;*/
+    color: #0a0c0c;
+}
+.clear:after{
+    content: "";
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.clear{
+    *zoom: 1;
+}
+.list-group-item-lb{
+	border-left: none;
+	border-right: none;
+}
+::-moz-placeholder { color: #369; }
+::-webkit-input-placeholder { color:#369; }
+:-ms-input-placeholder { color:#369; }
+.zd_btn1{
+	border-radius: 30px;
+	background-color: #36ADFF;
+	color: white;
+	padding: 3px 20px;
+}
+.zd_btn2{
+	padding: 3px 20px;
+	margin-left: 20px;
+	border-radius: 30px;
+}
+.zd_btn3{
+	background-color: #36ADFF;
+	color: white;
+	padding: 6px 10px;
+}
+/*公共声明*/
+#tophead{
+    background: #000000;
+    color: #cccccc;
+    height: 35px;
+    line-height: 35px;
+}
+
+.container .row{
+ /*   max-width: 1100px;*/
+    margin: 0 auto;
+}
+/*以上是网页最顶部样式*/
+.my_brand{
+    padding-top: 25px;
+}
+#fix-top{
+    background-color: white;
+    box-shadow: 0px 1px 1px #ccc;
+}
+.dixian .active{
+    border-bottom: 2px solid #36adff;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #555;
+    background-color: #e7e7e7;
+    height: 100px;
+}
+.dixian{
+    font-size: 16px;
+    font-weight: 600;
+}
+.dixian li a{
+    line-height: 60px;
+}
+.sign_in_stay{
+    position: absolute;
+    right:2%;
+    top: 30px;
+
+}
+/*以上是导航修饰*/
+#my_banner{
+    background:url("../img/0206_89.jpg") top center no-repeat ;
+    background-size: 100% 100%;
+    height: 550px;
+}
+.my_banner_p1,.my_banner_p2{
+    color: #ffffff;
+}
+.my_banner_p1{
+    padding-top: 100px;
+}
+.my_banner_school{
+    list-style: disc;
+    color: #ffffff;
+    padding-top: 100px;
+    font-size: 14px;
+    line-height: 24px;
+}
+.my_banner_erweim{
+    padding-top: 80px;
+}
+/*以上是banner修饰*/
+#Produt_Introduction,#Produt_Function,#Registration_Process,#Recruitment_Agents,#Elite_Wanted{
+padding: 105px 0;
+}
+#Produt_Introduction h1 span,.Produt_Introduction_intr_title,
+#Produt_Function h1 span,#Registration_Process h1 span,
+#Recruitment_Agents h1 span,#Elite_Wanted h1 span{
+    color: #36adff;
+}
+.p_i span{
+    padding: 0 10px;
+}
+.p_i:before,.p_i:after{
+    content: "";
+    position: relative;
+    border-top: 2px solid #36adff;
+    left: 0px;top: 20px;
+    padding: .5px 30px;
+    overflow: hidden;
+}
+#Produt_Introduction_intr,#Produt_Function_next{
+    height: 600px;
+    background-color: #f4f4f6;
+    padding: 100px 0;
+}
+.Produt_Introduction_join{
+    padding: 5px 10px;
+    margin-top: 30px;
+    border: 1px solid #535353;
+}
+.Produt_Introduction_intr_right{
+    padding-top: 50px;
+}
+.Produt_Introduction_intr_right p{
+    font-size: 14px;
+
+    line-height: 36px;
+}
+.Produt_Function_func-left h4{
+    font-weight: 500;
+}
+.Produt_Function_func-left p{
+    color: #989996;
+}
+.tu img{
+    width:100% ;
+    max-width: 100%;
+    text-align: center;
+}
+.Produt_Function_func_font img{
+    opacity: .7;
+    width: 100%;
+}
+.Produt_Function_zong:hover .Produt_Function_func_font img{
+    opacity: 1;
+    transition: all .2s linear;
+}
+#Produt_Function_next h2{
+   background: #119af8;
+   text-align: center;
+    color:#ffffff;
+    padding: 5px 0;
+}
+.wen_p{
+    background: #ffffff;
+    height: 380px;
+    box-shadow: 3px 3px 3px #cccccc;
+}
+.Produt_Function_next_wen p{
+    border-bottom: 1px solid #cccccc;
+    line-height:40px
+}
+.Registration_Process_bj{
+    border: 1px solid #119af8;
+    padding: 20px;
+    width: 90%;
+    margin:0 auto;
+    box-shadow: 0 0 20px #113e7b;
+    border-radius: 20px;
+    background: url("../img/a.jpg") ;
+    background-size: contain;
+    margin-top: 80px;
+}
+.Registration_Process_zclc{
+    padding: 20px 0 0 20px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 40px;
+}
+.Registration_Process_right h3{
+    padding: 5px 30px;
+}
+.Registration_Process_right{
+    color: #ffffff;
+    font-size: 12px;
+    position: relative;
+    padding: 0 0 0 20px;
+}
+.Registration_Process_right ol{
+    padding: 0 0 0 10px;
+}
+.Registration_Process_right ol li{
+    margin-top: 10px;
+    line-height: 20px;
+}
+.Registration_Process_img{
+    position:absolute;
+    top:2%;
+    right:5%
+}
+#table1{
+    background-color: #eee;
+}
+#table1 a{
+    line-height: 30px;
+}
+.container #table1 .active a{
+    background-image: url(../img/tab_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+}
+.daili{
+    margin-bottom: 30px;
+}
+.Recruitment_Agents_row{
+    margin-top: 30px;
+}
+#table1 li a{
+    font-size: 20px;
+    font-weight: 500;
+}
+.tab-pane h4{
+    font-weight: 500;
+}
+.tab-pane p{
+    color: #7c7d7a;
+}
+.Produt_Introduction_intr_img img{
+    width: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+}
+/*login部分*/
+.zh{
+	line-height: 40px;
+}
+.dl{
+	margin: 10px auto;
+}
+.content{
+	width: 600px;
+	margin: 0 auto;
+	background-color: white;
+	box-shadow: 0px 0px 2px #999;
+	font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+/*公众号部分*/
+.gz_pot{
+	position: relative;
+}
+.gz_left{
+	position: absolute;
+	left: 30px;
+}
+.gz_right{
+	position: absolute;
+	right: 40px;
+	top: 15px;
+}
+.gz_xuanx a{
+	color: #666;
+}
+.gz_xuanx a h5{
+	font-size: 12px;
+	color: #666;
+	line-height: 26px;
+}
+.xiugai{
+	color: sandybrown;
+	padding: 0 5px;
+}
+/*密码修改页面*/
+.Modify_pwd label{
+	font-size: 16px;
+	color: #999;
+	/*line-height: 40px;*/
+}
+/*校园微官网*/
+.gg{
+	padding: 4px 20px;
+	background-color: #E95D50;
+	color: white;
+	border-radius: 8px;
+	margin-right: 30px;
+}
+.zhanshi{
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	overflow: hidden;
+	padding-bottom: 20px;
+	position: relative;
+	margin-top: 10px;
+}
+.zhanshi img{
+	margin: 20px;
+}
+.xgk{
+	background-color: #FF8484;
+	line-height: 40px;
+}
+.xgk .gg{
+	background-color: white;
+	color: #FF8484;
+	margin-left: 20px;
+}
+.jfc{
+	background-color: #84D7AD;
+}
+.jfc .gg{
+	color: #84D7AD;
+}
+.sfc{
+	background-color: #FF8484;
+}
+.sfc .gg{
+	color: #FF8484;
+}
+.xgk_xq{
+	position: absolute;
+	bottom: 20px;
+	right: 30px;
+}
+.my_badge:before{
+    position: absolute;
+    content:"";
+    border-top: 1px solid #ccc;
+    width: 100%;
+    left: 0px;
+    overflow: hidden;
+    top: 10px;
+    z-index: -1;
+}
+/*家校沟通*/
+.panel-group a{
+	font-size: 14px;
+	color: #666;
+}
+/*校长版官网发布*/
+.zt_img{
+	background-color: #eee;
+	padding: 10px;
+}
+/*管理员班级列表*/
+.pil,.zid{
+	font-size: 16px;
+}
+/*分配管理员*/
+.zd_btn4{
+	background-color: #36adff;
+	color: white;
+	border: none;
+	padding: 2px 5px;
+}
+.zd_btn5{
+	background-color: #EB5D50;
+	color: white;
+	border: none;
+	padding: 2px 5px;
+	margin-left: 20px;
+}
+.permission_bg{
+	background-color: #eee;
+	padding: 10px;
+}
+.permission_bg .row{
+	margin: 10px;
+}
+/*作息时间设置*/
+.shijianduan{
+	background-color: #36ADFF;
+	padding: 4px 10px;
+	border-radius: 3px;
+	color: white;
+}
+/*考勤信息*/
+.kaoqin li{
+	padding: 5px 20px;
+}
+.kaoqin li:nth-child(even){
+	background-color: #ddd;
+}
+@media screen and (max-width: 768px) {
+    .sign_in_stay{
+        position: absolute;
+        right:0;
+        top: 25px;
+    }
+}
+
+#tupian img{
+    max-width: 100%;
+}

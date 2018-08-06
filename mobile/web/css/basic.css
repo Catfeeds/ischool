@@ -1,0 +1,58 @@
+html {
+    width: 100%;
+    font-size: 0;
+}
+body {
+    margin: 0;
+    font-size: 0;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+:focus {
+    outline: none;
+}
+a {
+    text-decoration: none;
+}
+div,aside,ul,li {
+    box-sizing: border-box;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+ul,menu,dir {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+input,
+button,
+textarea,
+select {
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+}
+input:-webkit-autofill {
+    background-color:none;
+    color: #ffffff;
+}
+.clear {
+    clear: both;
+}
+

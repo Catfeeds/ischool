@@ -1,0 +1,659 @@
+@charset "utf-8";
+
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+}
+/* Html全局CSS */
+html {
+	overflow-x: hidden; overflow-y: hidden;
+	font-size:10px;
+}
+/* Body全局CSS */
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+	overflow:hidden;
+}
+/* 列表样式 */
+.body-home-color ul li{
+list-style: none;	
+}
+.body-home-color li{
+list-style: none;	
+}
+/* 超链接样式 */
+.body-home-color a:link,a:visited,a:hover,a:active{
+	text-decoration:none;
+}
+/* Body背景颜色 */
+.body-home-color{
+	background-color:#EFEFEF;
+}
+
+/* 页头背景颜色 */
+#header{
+	background-color:#CC6666;
+	height:50px;
+	color:#FFF;
+	z-index:99;	
+}
+
+#header span {
+	font-size:1.5rem;
+	color:#FFF;
+	position:relative;
+	top:15px;
+}
+
+/* 标题的样式  内容过长 则会自动省略号 */
+.title-text-css{
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+
+.title-text-css-jj{
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	color:#FF9900;
+}
+
+/* 时间样式 */
+.time-text-css{
+    text-align:center; 
+	color:#666;
+	font-size:1.3rem;
+}
+.title-top{
+  margin-top:12px;
+}
+
+.title-top-t{
+  margin-top:1px;
+}
+
+.title-top-time{
+  margin-top:2px;
+}
+
+/* 页面阴影 */
+.page-demo {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.page-demo-search {
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.12);
+}
+
+/* 幻灯片 */
+.banner {
+position: relative;
+width: 100%;
+overflow: auto;
+font-size: 1.8rem;
+line-height: 24px;
+text-align: center;
+z-index:-1;
+}
+
+/* 幻灯片UL */
+.banner ul {
+list-style: none;
+width: 100%;
+}
+
+.banner ul li {
+display: block;
+float: left;
+width: 33%;
+min-height: 406px;
+-o-background-size: 100% 100%;
+-ms-background-size: 100% 100%;
+-moz-background-size: 100% 100%;
+-webkit-background-size: 100% 100%;
+background-size: 100% 100%;
+
+}
+
+/* 幻灯片在各种尺寸的屏幕中所控制的图片大小 */
+@media only screen and (min-device-width: 300px) and (max-device-width: 480px), (max-width: 900px) {
+
+.banner ul li {
+    min-height: 280px;
+}
+
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 480px), (max-width: 700px) {
+
+.banner ul li {
+    min-height: 210px;
+}
+
+}
+@media only screen and (min-device-width: 300px) and (max-device-width: 480px), (max-width: 485px) {
+.banner ul li {
+    min-height: 140px;
+}
+
+}
+
+/* 页脚ID */
+#footer{
+	text-align:center;
+	width:100%;
+	height:50px;
+	position:fixed;
+	bottom:0px;
+	z-index:9999;
+	background-color:#F7F7F7;
+	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.07);
+}
+/* 页脚选项样式 */
+.footer-center{
+	text-align:center;
+	font-size:1.2rem;
+	width:100%;
+	height:50px;
+	background-color:#FFF;
+}
+/* 页脚选项 字体上距离CSS */
+.footer-center span{
+	top:10px;
+	position:relative;
+	color:#34495e;
+}
+/* 页脚选项 图标CSS */
+.footer-center .glyphicon{
+	font-size:1.5rem;
+	color:#FF6666;
+}
+
+
+/* 翻页ID */
+#next-node{
+	text-align:center;
+	height:50px;
+	margin-top:-40px;
+	margin-bottom:55px;
+	background-color:#FFF;
+}
+/* 翻页选项样式 */
+.next-node-center{
+	text-align:center;
+	font-size:1.1rem;
+	width:100%;
+	height:50px;
+	background-color:#FFF;
+}
+/* 翻页选项 字体上距离CSS */
+.next-node-center span{
+	top:10px;
+	position:relative;
+	color:#34495e;
+}
+/* 翻页选项 图标CSS */
+.next-node-center .glyphicon{
+	font-size:17px;
+	color:#FF6666;
+}
+
+/* 超市翻页 */
+/* 翻页选项样式 */
+.shop-next-node-center{
+	text-align:center;
+	font-size:1.1rem;
+}
+/* 翻页选项 字体上距离CSS */
+.shop-next-node-center span{
+	top:5px;
+	position:relative;
+	color:#34495e;
+}
+/* 翻页选项 图标CSS */
+.shop-next-node-center .glyphicon{
+	font-size:1.5rem;
+	color:#FF6666;
+}
+
+/* 横线 */
+.line-waper{
+	margin-top:0;
+	width:100%;
+	background-color:#EEE;
+	height:2px;
+}
+
+/* 下拉列表的容器 背景颜色 白色 */
+.text-waper{
+	margin-top:11px;
+	width:100%;
+	background-color:#FFF;
+	height:45px;
+}
+/* 活动、贴贴、促销下拉列表的容器 背景颜色 白色 */
+.text-waper2{
+	margin-top:-21px;
+	width:100%;
+	background-color:#FFF;
+	height:45px;
+}
+
+.text-waper-jj{
+	width:100%;
+	background-color:#FFF;
+}
+
+/* 字体大小为12px */
+.section-font{
+	font-size:1.5rem;
+	margin-bottom:55px;
+}
+
+/* 字体大小为12px */
+.section-font-home{
+	font-size:1.5rem;
+}
+
+/* 意见保修 用户电话和住址 图标样式 */
+.section-font-glyphicon{
+	color:#FF6666; 
+	font-size:1.5rem;
+}
+
+/* 遮盖层 */
+.black_overlay{
+display: none;
+position: fixed;
+top: 0%;
+left: 0%;
+width: 100%;
+height: 100%;
+background-color:#000;
+z-index:1002;
+-moz-opacity: 0.7;
+opacity:.70;
+filter: alpha(opacity=70);
+} 
+
+/* BOX详细设置遮盖层 */
+.box-text{
+display: none;
+position:absolute;
+top: 15%;
+left: 0%;
+width: 100%;
+overflow:hidden;
+background-color:#000;
+border-radius:15px;
+z-index:1000;
+-moz-opacity: 0.8;
+opacity:.80;
+filter: alpha(opacity=80);
+}
+
+/* BOX遮盖层 文字颜色 */
+.box-text span{
+ color:#FFF;
+}
+
+/* BOX遮盖层 input输入框位置 样式 */
+.box-text input{
+ height:35px; 
+ margin-top:-7px; 
+ border-radius:5px;
+}
+
+/* 文本居中 */
+.col-center{
+ text-align:center; 
+}
+/* 文本靠右 */
+.col-right{
+ text-align:right; 
+}
+
+/* BOX遮盖层 提交按钮位置80px */
+.box-get-center{
+ text-align:center; 
+ margin-top:25px;
+ margin-bottom:80px;
+}
+
+/* BOX遮盖层 提交按钮位置 */
+.box-get-center-Second{
+ text-align:center; 
+ margin-top:25px;
+ margin-bottom:40px;
+}
+
+/* 提交按钮样式 */
+.btn-css{	
+ width:80px;
+}
+
+/* BOX内容显示页面 */
+.box-content{
+width: 100%;
+overflow:hidden;
+background-color:#000;
+border-style:solid;
+border-width:5px;
+border-color:#F7F7F7;
+border-radius:15px;
+-moz-opacity: 0.7;
+opacity:.70;
+filter: alpha(opacity=70);
+}
+
+.box-content span{
+	color:#FFF;
+	font-size:1.4rem;
+}
+
+.box-content-color{
+	color:#FFF;
+}
+
+/* 遮盖层 */
+.search-box{
+display: none;
+position:absolute;
+overflow:hidden;
+left: 0%;
+width: 100%;
+background-color:#FFF;
+border-radius:10px 10px 10px 10px;
+z-index:1000;
+-moz-opacity: 0.9;
+opacity:.90;
+filter: alpha(opacity=90);
+}
+
+#search{
+	margin-top:5px;
+	margin-bottom:5px;
+	height:25px;
+}
+.search-css{
+background-color:#FFF;
+-moz-opacity: 0.7;
+opacity:.70;
+filter: alpha(opacity=70);
+}
+.search-submit{
+	margin-top:5px;
+	margin-bottom:5px;
+	height:25px;
+	width:100%;
+	min-width:60px;
+	margin-left:-35px;	
+	background-color:#CCCCCC;
+    border-width:0px;
+	font-size:1.3rem;
+	border-radius:0px 4px 4px 0px;
+	color:#666666;
+}
+.search-con {
+  display: block;
+  width:100%;
+  padding: 6px 12px;
+  font-size: 1.3rem;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.tec-nay{
+	height:50px;
+	width:100%;
+}
+
+#shop-search{
+	margin-top:7px;
+	margin-bottom:7px;
+	height:30px;
+}
+
+
+.shop-search-css{
+    background-color:#E4393C;
+	height:45px;
+	width:100%;
+	box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.15);
+	position:fixed;
+	z-index:1001;
+}
+
+.shop-search-submit{
+	margin-top:8px;
+	margin-bottom:8px;
+	height:28px;
+	width:100%;
+	min-width:75px;
+	margin-left:-49px;	
+	background-color:#FF6666 ;
+    border-width:0px;
+	font-size:1.3rem;
+	border-radius:0px 5px 5px 0px;
+	color:#FFF;
+}
+
+.shop-search-con {
+  display: block;
+  width:100%;
+  padding: 6px 12px;
+  font-size: 1.3rem;
+  color: #555;
+  background-color: #FFF;
+  border: 1px solid #E4393C;
+  border-radius: 5px 0px 0px 5px;
+  margin-left:-9px;
+}
+
+/* 遮盖层 */
+.search-choice{	
+display:none;
+position:fixed;
+overflow:hidden;
+left: 0%;
+width: 100%;
+bottom:50px;
+z-index:1001;
+}
+
+.search-choice .choice-div{
+margin-top:9px;
+}
+
+.search-choice .choice-span{
+background-color:#FF6666;
+font-size:1.2rem; 
+color:#FFF; 
+font-weight:normal;	
+}
+
+/* 遮盖层 */
+.shop-total{	
+display:none;
+position:fixed;
+overflow:hidden;
+left: 0%;
+width: 100%;
+bottom:50px;
+z-index:1001;
+}
+
+
+/* 遮盖层 */
+.footer-nav{	
+display:none;
+position:fixed;
+overflow:hidden;
+left: 0%;
+width: 100%;
+box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.05);
+bottom:50px;
+z-index:1001;
+}
+
+.footer-nav2{	
+display:none;
+position:fixed;
+overflow:hidden;
+left: 0%;
+width: 100%;
+box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.05);
+bottom:50px;
+z-index:1001;
+}
+
+.footer-nav3{	
+display:none;
+position:fixed;
+overflow:hidden;
+left: 0%;
+width: 100%;
+box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.05);
+bottom:50px;
+z-index:1001;
+}
+
+
+
+a > .footer-div:hover{
+	background-color:#FF6666;
+	color:#FFF;
+}
+
+
+.footer-div {
+  font-size:12px;
+  color:#34495e;
+  height:40px;
+  padding-top:10px;
+  border-bottom:solid 1px #F7F7F7;
+  font-size:1.3rem;
+}
+
+@media screen and (min-width:1081px)
+
+{
+
+
+/* 宽度大于1081时应用的样式 */
+
+
+}
+
+
+
+
+@media screen and (max-width:1080px)
+
+{
+
+
+/* 宽度小于等于1080时应用的样式 */
+
+
+}
+
+
+    .student-templet{
+        background-color: #ecf0f1;
+        text-align: center;
+        padding: 20px 0 20px 0;
+    }
+    .templet-download{
+        text-align: center;
+        font-size: 14px;
+    }
+    .select-wapper{
+        margin-top: 20px;
+    }
+    .select-title{
+        float: left;
+        width: 10%;
+        margin-right: 10px;
+        padding-left: 15px;
+    }
+    .select-wapper select {
+        float: left;
+    }
+    .clear{
+        clear: both;
+    }
+    #upload-button{
+        margin-top: 25px;
+        background-color: #e74c3c;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 5px;
+        color: #FFFFFF;
+        display: block;
+    }
+    
+    #loading-main{
+        background-color: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+    .loading-text{
+        color: #FFFFFF;
+        text-align: center;
+        vertical-align:middle;
+        position:relative;
+        overflow:hidden;
+        width:100%;
+        top:52%;
+    }
+   
+    #file-sure{
+        display: none;
+    }
+    #file-name-wapper{
+        background-color: #ecf0f1;
+        line-height: 50px;
+        margin-bottom: 20px;
+    }
+    .file-name-text{
+        width:30%;
+        line-height: 50px;
+        float: left;
+        text-align: center;
+    }
+    #filename{
+        width:70%;
+        line-height: 50px;
+        float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #file-up-button{
+        background-color: #e74c3c;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 5px;
+        color: #FFFFFF;
+        width: 49%;
+        float: left;
+    }
+    #file-close-button{
+        background-color: #f1c40f;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 5px;
+        color: #FFFFFF;
+        width: 49%;
+        float: right;
+    }

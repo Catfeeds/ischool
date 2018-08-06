@@ -1,0 +1,219 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* --------------------- 首页轮播图片、栏目CSS ----------------------- */
+.clear{
+    clear: both;
+}
+#dimmer-loader{
+    display: none;
+}
+/* 添加栏目INPUT框 */
+#addcolumn-wrapper{
+    margin-top: 50px;
+    height: 50px;
+    background-color: #ecf0f1;
+}
+#addcolumn-input{
+    float: left;
+    width: 70%;
+    height: 50px;
+    padding: 5px 0 5px 10px;
+}
+#addcolumn-input input{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid #bdc3c7;
+    padding: 0 10px 0 10px;
+}
+#addcolumn-input input:focus {
+    border: 2px solid #e74c3c;
+	transition-duration: 1s;
+	-webkit-transition-duration: 1s;	    
+}
+#addcolumn-new-wrapper{
+    float: left;
+    width: 30%;
+    padding: 5px 10px 5px 5px;
+}
+#addcolumn-new-wrapper div{
+    line-height: 40px;
+	background-color: #e74c3c;
+	font-size: 1.5rem;
+	color: #FFFFFF;
+    border-radius: 5px;
+	text-align: center; 
+}
+/* 轮播按钮 */
+.cycle-picture-button{
+    width: 100%;
+    line-height: 45px;
+	background-color: #e74c3c;
+	font-size: 1.5rem;
+	color: #FFFFFF;
+    border-radius: 5px;
+	text-align: center;
+}
+/* 栏目按钮 */
+.columns-button{
+    width: 100%;
+    line-height: 45px;
+	background-color: #3498db;
+	font-size: 1.5rem;
+	color: #FFFFFF;
+    border-radius: 5px;
+	text-align: center;
+}
+/* 添加栏目页面 - 栏目列表 */
+#allcalumns{
+    padding: 20px 0 20px 0;
+}
+.calumns-list{
+    width: 100%;
+    height: 45px;
+    margin-bottom: 1px;
+}
+.calumns-title{
+    width: 50%;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    height: 45px;
+    text-align: center;
+    float: left;
+    padding: 5px 10px 5px 10px;
+	overflow:hidden; 
+	white-space:nowrap; 
+	text-overflow:ellipsis;    
+}
+.calumns-title-text{
+    width: 50%;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    line-height: 45px;
+    text-align: center;
+    float: left;
+    padding: 0 10px 0 10px;
+	overflow:hidden; 
+	white-space:nowrap; 
+	text-overflow:ellipsis;    
+}
+.save-calumns{
+    width: 25%;
+    line-height: 45px;
+    background-color: #2ecc71;
+    color: #FFFFFF;
+    text-align: center;
+    float: left; 
+}
+.edit-calumns{
+    width: 25%;
+    line-height: 45px;
+    background-color: #3498db;
+    color: #FFFFFF;
+    text-align: center;
+    float: left;    
+}
+.delete-calumns{
+    width: 25%;
+    line-height: 45px;
+    background-color: #e74c3c;
+    color: #FFFFFF;
+    text-align: center;
+    float: left;    
+}
+.columnName{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: 0 solid #bdc3c7;
+    padding: 0 10px 0 10px;
+}
+/* 轮播按钮 栏目按钮 页面*/
+.index-columns-wrapper{
+    margin-top: 50px;
+    padding: 0 10px 0 10px;
+}
+#cycle-picture{
+    margin: 10px 0 10px 0;
+}
+#columns{
+    margin: 10px 0 10px 0;
+}
+/* 轮播页面*/
+
+.upload-wrapper{
+    margin: 10px;
+}
+
+#upload-picture{
+    width: 100%;
+    line-height: 45px;
+	background-color: #e74c3c;
+	font-size: 1.5rem;
+	color: #FFFFFF;
+    border-radius: 5px;
+	text-align: center;    
+}
+
+.picture-list{
+    width: 100%;
+    height: 150px;
+    margin: 0 0 2px 0;
+    position: relative;
+}
+.picture-narrow {
+    width: 100%;
+    height: 150px;
+    float: left;
+    background-color: #ecf0f1;
+    padding: 10px;
+    z-index: 1;
+    position: absolute;
+}
+.background-image{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+}
+.picture-delete{
+    width: 100%;
+    padding: 10px;
+    top: 80px;
+    z-index: 2;
+    position: absolute;
+    display: none;
+}
+.picture-delete-wrapper{
+    line-height: 50px;
+    border-radius:0 0 5px 5px;
+    text-align: center;
+    background:rgba(0, 0, 0, 0.7);
+}
+.delete-picture{
+    width: 100%;
+    text-align: center;
+}
+.delete-picture a{
+    padding: 10px 40px 10px 40px;
+	background-color: #e74c3c;
+	font-size: 15px;
+	color: #FFFFFF;
+    border-radius: 5px;
+	text-align: center; 
+}
+.empty-picture{
+    width: 95%;
+    background-color: #ecf0f1;
+    padding: 20px 0 20px 0;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
+}
+.picture-list-wrapper,#allcalumns{
+    padding: 0 0 50px 0;
+}

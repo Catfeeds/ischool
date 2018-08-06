@@ -1,0 +1,47 @@
+\r\n{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"500.00","cardNo":"00000006","curBalance":"73000.00","custNo":"000015","mac":"3EA56C87BA9022A84132FB4978C56F97","thirdCode":"510102180306020203","tradeNo":"390000001520180316135142","tradeTime":"20180316135142","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"500.00","cardNo":"00000006","curBalance":"73000.00","custNo":"000015","mac":"3EA56C87BA9022A84132FB4978C56F97","thirdCode":"510102180306020203","tradeNo":"390000001520180316135142","tradeTime":"20180316135142","tradeType":"2","version":"200","walletType":"1"}------WebKitFormBoundary5oJBPBElsKtPSAv9
+Content-Disposition: form-data; name="amount"
+
+2
+------WebKitFormBoundary5oJBPBElsKtPSAv9
+Content-Disposition: form-data; name="custNo"
+
+000015
+------WebKitFormBoundary5oJBPBElsKtPSAv9
+Content-Disposition: form-data; name="curBalance"
+
+50
+------WebKitFormBoundary5oJBPBElsKtPSAv9
+Content-Disposition: form-data; name="tradeTime"
+
+20180316121425
+------WebKitFormBoundary5oJBPBElsKtPSAv9--
+
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"600.00","cardNo":"00000006","curBalance":"72400.00","custNo":"000015","mac":"BB671B1D6487E8228851479BCD0C1C01","thirdCode":"510102180306020203","tradeNo":"400000001520180316144815","tradeTime":"20180316144815","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"700.00","cardNo":"00000006","curBalance":"71700.00","custNo":"000015","mac":"7360ADFF80B1DA7F3636F1493641D38B","thirdCode":"510102180306020203","tradeNo":"410000001520180316145210","tradeTime":"20180316145210","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"100.00","cardNo":"00000006","curBalance":"71600.00","custNo":"000015","mac":"9DEC13FE1E3AD132686FC388DFA9BEFA","thirdCode":"510102180306020203","tradeNo":"420000001520180316145408","tradeTime":"20180316145408","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"3.00","cardNo":"00000006","curBalance":"71597.00","custNo":"000015","mac":"A1D7D4BCAB85D646B10B3008CBB175B9","thirdCode":"510102180306020203","tradeNo":"430000001520180316150926","tradeTime":"20180316150926","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"7.00","cardNo":"00000006","curBalance":"71590.00","custNo":"000015","mac":"2B3602E132061753F150438447A07600","thirdCode":"510102180306020203","tradeNo":"440000001520180316151523","tradeTime":"20180316151523","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"100.00","cardNo":"00000006","curBalance":"71490.00","custNo":"000015","mac":"D251A02CF72E1C11B843A3AF0952B5B3","thirdCode":"510102180306020203","tradeNo":"450000001520180317095813","tradeTime":"20180317095813","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"300.00","cardNo":"00000006","curBalance":"71190.00","custNo":"000015","mac":"F91F616C62A0E4E7540BF558EF0DE5EE","thirdCode":"510102180306020203","tradeNo":"460000001520180317101007","tradeTime":"20180317101007","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000015","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"600.00","cardNo":"00000006","curBalance":"70590.00","custNo":"000015","mac":"711D5E522D00D14A30A7BF87B53A8375","thirdCode":"510102180306020203","tradeNo":"470000001520180317103800","tradeTime":"20180317103800","tradeType":"2","version":"200","walletType":"1"}
+
+
+
+
+
+
+
+
+{"accountId":"00000027","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"800000.00","cardNo":"00000008","curBalance":"800000.00","custNo":"","mac":"BFE92E6EABB1A13D981FF8FEAA867EA0","thirdCode":"510102180306020203","tradeNo":"490000002720180517113104","tradeTime":"20180517113104","tradeType":"1","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"88800.00","cardNo":"00000009","curBalance":"88800.00","custNo":"","mac":"4F875B3FE630B10D091D8ADEA566DB23","thirdCode":"510102180306020203","tradeNo":"510000002820180517113330","tradeTime":"20180517113330","tradeType":"1","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"100.00","cardNo":"00000009","curBalance":"88700.00","custNo":"","mac":"73D954203FFF5158537B99D7325BD308","thirdCode":"510102180306020203","tradeNo":"520000002820180517113549","tradeTime":"20180517113549","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"200.00","cardNo":"00000009","curBalance":"88500.00","custNo":"","mac":"22C8EE4732633973315CB2E9782695B4","thirdCode":"510102180306020203","tradeNo":"530000002820180517113551","tradeTime":"20180517113551","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"200.00","cardNo":"00000009","curBalance":"88300.00","custNo":"","mac":"D337EE880F3DACF0D9BA1E4F41F51ADA","thirdCode":"510102180306020203","tradeNo":"540000002820180517113615","tradeTime":"20180517113615","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"100.00","cardNo":"00000009","curBalance":"88200.00","custNo":"","mac":"2C7B8D0C867C2E487E6E0A8841390666","thirdCode":"510102180306020203","tradeNo":"550000002820180517113707","tradeTime":"20180517113707","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"200.00","cardNo":"00000009","curBalance":"88000.00","custNo":"","mac":"E85AB9BCF91EFA88AAD9CBE355AAB7C1","thirdCode":"510102180306020203","tradeNo":"560000002820180517113710","tradeTime":"20180517113710","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"100.00","cardNo":"00000009","curBalance":"87900.00","custNo":"","mac":"E4F32B44B06554374AB42AD019C37004","thirdCode":"510102180306020203","tradeNo":"570000002820180517113751","tradeTime":"20180517113751","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000028","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"100.00","cardNo":"00000009","curBalance":"87800.00","custNo":"","mac":"5B2AA6381BB78E81F3C5CDE586447602","thirdCode":"510102180306020203","tradeNo":"580000002820180517113950","tradeTime":"20180517113950","tradeType":"2","version":"200","walletType":"1"}
+{"accountId":"00000038","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"888800.00","cardNo":"00000014","curBalance":"888800.00","custNo":"00037","mac":"B0C536125C913E8617BE3C96C7AE06EF","thirdCode":"510102180306020203","tradeNo":"630000003820180620084535","tradeTime":"20180620084535","tradeType":"1","version":"200","walletType":"1"}
+{"accountId":"00000034","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"888800.00","cardNo":"00000010","curBalance":"888800.00","custNo":"","mac":"6FA6336D71FB01B1202108610F527D3A","thirdCode":"510102180306020203","tradeNo":"640000003420180620084554","tradeTime":"20180620084554","tradeType":"1","version":"200","walletType":"1"}
+{"accountId":"00000039","actionStr":"YKT_BALANCE_CHANGE_NOTIFY","amount":"888800.00","cardNo":"00000015","curBalance":"888800.00","custNo":"","mac":"9ED36B2DC95679AA964B83A9C8FB8B70","thirdCode":"510102180306020203","tradeNo":"660000003920180620084704","tradeTime":"20180620084704","tradeType":"1","version":"200","walletType":"1"}
